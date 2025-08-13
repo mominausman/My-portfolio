@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momina Usman - AI Engineer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #0B1210; /* Very dark greenish black */
+            color: #D6D6D6; /* Soft light grey text */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0B1210, #00C896); /* Gradient from dark greenish black to vivid emerald */
+            color: #D6D6D6;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 200, 150, 0.3); /* Subtle emerald glow */
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 200, 150, 0.2) 0%, transparent 70%);
+            opacity: 0.3;
+        }
+
+        header p.greeting {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(0, 200, 150, 0.5);
+        }
+
+        header h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        header p.description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+
+        header a {
+            display: inline-block;
+            background: #00C896; /* Vivid emerald button */
+            color: #0B1210;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 15px rgba(0, 200, 150, 0.4);
+        }
+
+        header a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(242, 163, 101, 0.6); /* Peach glow on hover */
+            background: #F2A365; /* Muted warm peach on hover */
+            color: #0B1210;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #1a2523; /* Slightly lighter dark green for sections */
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #00C896; /* Vivid emerald heading */
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #F2A365; /* Peach underline */
+            margin: 0.5rem auto 0;
+            box-shadow: 0 0 10px rgba(242, 163, 101, 0.4);
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background: #0B1210; /* Dark greenish black for skills */
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(0, 200, 150, 0.2);
+            font-weight: 700;
+            color: #00C896; /* Emerald text */
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+            background: #F2A365; /* Peach on hover */
+            color: #0B1210;
+            box-shadow: 0 0 20px rgba(242, 163, 101, 0.5);
+        }
+
+        .education-item, .certification-item, .project {
+            background: #0B1210; /* Dark greenish black for cards */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 200, 150, 0.2);
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center; /* Center content in cards */
+        }
+
+        .education-item:hover, .certification-item:hover, .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(242, 163, 101, 0.4);
+        }
+
+        .education-item h3, .certification-item h3, .project h3 {
+            font-size: 1.8rem;
+            color: #00C896;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p, .certification-item p, .project p {
+            margin-bottom: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center tech badges */
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech span {
+            background: #1a2523; /* Dark green for tech badges */
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #F2A365; /* Peach text */
+            box-shadow: 0 0 10px rgba(242, 163, 101, 0.2);
+        }
+
+        #contact p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        #contact a {
+            color: #00C896; /* Emerald links */
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            color: #F2A365; /* Peach on hover */
+            text-shadow: 0 0 10px rgba(242, 163, 101, 0.5);
+        }
+
+        footer {
+            background: #1a2523; /* Dark green footer */
+            color: #D6D6D6;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            box-shadow: 0 0 15px rgba(0, 200, 150, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            header h2 { font-size: 1.5rem; }
+            header p.greeting { font-size: 1.2rem; }
+            section { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p class="greeting">Hi, my name is</p>
+        <h1>Momina Usman</h1>
+        <h2>AI Engineer</h2>
+        <p class="description">I'm a passionate AI Engineer specializing in machine learning and data-driven solutions. I build intelligent models to solve complex real-world problems.</p>
+        <a href="#about">Learn More</a>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I have completed my BS in Artificial Intelligence, driven by a passion for leveraging data to build impactful solutions. My journey in AI is fueled by curiosity and a commitment to applying cutting-edge technologies to solve real-world problems.</p>
+        <div class="skills-grid">
+            <div class="skill">Python</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">Flask</div>
+            <div class="skill">Deep Learning</div>
+            <div class="skill">Data Analytics</div>
+            <div class="skill">Database</div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Bachelor of Science, Artificial Intelligence</h3>
+            <p>The University of Faisalabad<br>Graduated: 2025</p>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="certification-item">
+            <h3>Data Analytics Certification</h3>
+            <p>Leverify<br>Issued: December 2023</p>
+            <p>Successfully completed a comprehensive Data Analytics course offered by Leverify, focusing on the foundational and practical aspects of data-driven decision-making. The course covered key concepts in data collection, cleaning, analysis, and visualization using industry-standard tools and techniques.</p>
+        </div>
+        <div class="certification-item">
+            <h3>UI/UX Design Specialization</h3>
+            <p>Coursera | Meta (Facebook)<br>Issued: February 2025</p>
+            <p>Learned the foundations of user experience design, wireframing, prototyping, and usability testing. Gained hands-on experience using Figma to create user-centered, responsive designs. Completed a capstone project building a full design solution from research to prototype.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <h3>Heart Disease Prediction</h3>
+                <p>Developed a machine learning model to predict heart disease risk using Random Forest and XGBoost, with data preprocessing and feature engineering.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Scikit-learn</span>
+                    <span>NumPy</span>
+                    <span>Pandas</span>
+                    <span>Jupyter Notebook</span>
+                    <span>Pickle</span>
+                </div>
+            </div>
+            <div class="project">
+                <h3>Pneumonia Deep Learning Model</h3>
+                <p>Built a deep learning model to detect pneumonia from chest X-ray images using convolutional neural networks, with image preprocessing and model optimization.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>Keras</span>
+                    <span>OpenCV</span>
+                    <span>NumPy</span>
+                    <span>Pandas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p>Connect with me for collaborations or inquiries. I'm always open to discussing new opportunities in AI and software development!</p>
+        <p>Email: <a href="mailto:mominau94@gmail.com">mominau94@gmail.com</a></p>
+        <p>Phone: <a href="tel:+923040799768">03040799768</a></p>
+        <p>GitHub: <a href="https://github.com/mominausman">github.com/mominausman</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Momina Usman. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('section');
+        const options = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
